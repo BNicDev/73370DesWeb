@@ -340,101 +340,110 @@ footer {
 // Responsive 
 @media (max-width: 768px) {
   body {
-    padding-top: 60px;
+      // Esta línea es opcional, solo si ves que el contenido
+      // queda debajo del menú fijo al navegar con anclas.
+      // padding-top: 60px; 
   }
 
+  // --- NAVBAR ---
   .nav-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 0 20px;
-    flex-wrap: nowrap;
-    
-    .nav-mobile {
-      flex-direction: column;
       position: fixed;
-      top: 60px;
+      top: 0;
       left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: $first-color;
+      z-index: 1000;
+      padding: 0 20px;
       
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      padding-top: 20px;
-      align-items: flex-start;
-      gap: 20px;
-    }
+      .nav-mobile {
+          flex-direction: column;
+          align-items: center; // Centra los items del menú
+          justify-content: center;
+          position: fixed;
+          top: 0; // Lo movemos al tope
+          left: 0;
+          width: 100%;
+          height: 100vh; // Ocupa toda la pantalla
+          background-color: rgba(115, 68, 68, 0.95); // Un poco de transparencia
+          backdrop-filter: blur(5px); // Efecto "blurry" moderno
 
-    
-    .menu-toggle-label {
-      display: block;
-      margin-left: auto;
-    }
+          transform: translateX(100%);
+          transition: transform 0.3s ease-in-out;
+          padding: 0;
+          gap: 20px;
+      }
 
-    .menu-toggle-input:checked ~ .nav-mobile {
-      transform: translateX(0);
-    }
+      .nav-list {
+          flex-direction: column; // Los links uno debajo del otro
+          gap: 20px; // Espacio entre los links
+      }
+      
+      .menu-toggle-label {
+          display: block; // Mostramos el ícono hamburguesa
+      }
+
+      .menu-toggle-input:checked ~ .nav-mobile {
+          transform: translateX(0); // Mostramos el menú
+      }
   }
 
-  .nav-list {
-    flex-direction: column;
-  }
-
-  .intro-container {
-    flex-direction: column;
-
-    .intro-img img {
-      width: 100%;
-      height: auto;
-    }
-
-    .intro-text {
+  // --- SECCIONES PRINCIPALES ---
+  .intro-container, .local-container {
+      flex-direction: column;
       text-align: center;
-      width: 100%;
-    }
+      padding: 40px 20px; // Menos padding lateral en móvil
+
+      .intro-img, .local-img {
+          margin-left: 0;
+          margin-right: 0;
+          flex: none; // Reseteamos el flex
+          width: 100%;
+          max-width: 400px; // Un máximo para que no sea gigante
+      }
+
+      .intro-text {
+          flex: none;
+          width: 100%;
+      }
   }
 
-  .destacados,
-  .cards {
-    flex-direction: column;
-    width: 100%;
+  // --- DESTACADOS ---
+  .destacados {
+      h1 {
+          text-align: center;
+          padding: 0 15px;
+      }
+      .cards {
+          flex-direction: column;
+          gap: 20px; // Espacio entre tarjetas
+      }
+      .card {
+          width: 90%;
+          max-width: 320px;
+          margin-bottom: 0;
+      }
   }
 
-  .card {
-    margin-bottom: 10px;
-  }
-
-  .sobre-nosotros {
-    padding: 40px 15px;
-  }
-
+  // --- CAROUSEL ---
   .carousel-item img {
-    height: 300px;
+      height: 300px;
   }
 
+  // --- FOOTER ---
   footer {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 0;
-    min-height: auto;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px 0;
+      gap: 10px;
 
-    .derechos h3,
-    .designby h3 {
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      margin: 5px 0;
-    }
+      .derechos h3,
+      .designby h3 {
+          padding: 0;
+          margin: 0;
+          font-size: 0.9rem;
+      }
   }
 }
 
-@media (min-width: 769px) {
-  .menu-toggle-label {
-    display: none;
-  }
-
-  .nav-mobile {
-    display: block;
-  }
-}
+// Esto no lo necesitas, ya que los estilos de escritorio son los que están por defecto
+// @media (min-width: 769px) {
+// ...
+// }
